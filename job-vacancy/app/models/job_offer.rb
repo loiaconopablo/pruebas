@@ -23,4 +23,8 @@ class JobOffer
 		JobOffer.all(:user => user)
 	end
 
+	def getId
+		id
+	end
+
 end

@@ -24,6 +24,7 @@
 		</td>		
 		<td>
 			<%= link_to 'Apply', url_for(:job_offers, :apply, :offer_id => offer.id), :class => "btn btn-primary" %>
+			<%= link_to 'Consulta', url_for(:consulta, :new, :offer_id => offer.id), :class => "btn btn-secondary" %>
 		</td>		
 	</tr>
 
