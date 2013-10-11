@@ -3,6 +3,7 @@
 	<tr>
 		<th>Title</th>
 		<th>Description</th>
+		<th>Job Offer</th>
 	</tr>
 	<% @consultas_encontradas.each do | consu| %>
 
@@ -12,6 +13,9 @@
 		</td>
 		<td>
 			<%= consu.description %>
+		</td>	
+		<td>
+			
 		</td>		
 		<td>
 		<%= link_to 'Edit', url_for(:consulta, :edit, :consu_id => consu.id), :class => "btn btn-primary" %>

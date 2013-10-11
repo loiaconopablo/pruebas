@@ -5,9 +5,9 @@ class Consulta
 	property :title, String
 	property :description, Text
 	belongs_to :user
-	#belongs_to :job_offer
+	belongs_to :job_offer
 
-	validates_presence_of :title
+	#validates_presence_of :title
 	
 	def owner
 		user
@@ -25,7 +25,7 @@ class Consulta
 		Consulta.all(:job_offer => job_offer)
 	end
 
-	def job_offer=(a_job_offer)
+	def job=(a_job_offer)
 		self.job_offer = a_job_offer
 	end
 

@@ -23,6 +23,10 @@ class JobOffer
 		JobOffer.all(:user => user)
 	end
 
+	def self.find_by_id(id)
+		JobOffer.all(:id => id)
+	end
+
 	def getId
 		id
 	end

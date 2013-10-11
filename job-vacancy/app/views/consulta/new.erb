@@ -1,8 +1,9 @@
 <h1>Nueva Consulta </h1> 
-<% form_for(@consulta, '/consulta/create') do |f| %>
-  	
-  <%= partial 'consulta/form', :locals => { :f => f } %>
 
+<% form_for(@consulta, '/consulta/create') do |f| %>
+ 
+  <%= partial 'consulta/form', :locals => { :f => f } %>
+	
   <%= f.submit "Create", :class => "btn btn-primary" %>
   <%= link_to 'Cancel', url_for(:consulta, :my), :class => "btn btn-secondary" %>
 <% end %>
