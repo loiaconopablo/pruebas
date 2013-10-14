@@ -12,8 +12,7 @@ JobVacancy::App.controllers :consulta do
 
   get :new, :with =>:offer_id  do
     @consulta = Consulta.new
-    @jobOf = JobOffer.get(params[:offer_id])
-    @consulta.job = @jobOf
+    @consulta.job = JobOffer.get(params[:offer_id])
     render 'consulta/new'
   end
 
@@ -37,7 +36,6 @@ JobVacancy::App.controllers :consulta do
   post :create do
     @consulta = Consulta.new(params[:consulta])
     @consulta.owner = current_user
-    #@consulta.job = @jobOf
     if @consulta.save
       flash[:success] = 'Consulta Creada'
       redirect '/consulta/my'

@@ -1,13 +1,12 @@
 class Consulta
 	include DataMapper::Resource
-# property <name>, <type>
+	
+	# property <name>, <type>
 	property :id, Serial
 	property :title, String
-	property :description, Text
-	belongs_to :user
+	property :description, String
 	belongs_to :job_offer
-
-	#validates_presence_of :title
+	belongs_to :user
 	
 	def owner
 		user
