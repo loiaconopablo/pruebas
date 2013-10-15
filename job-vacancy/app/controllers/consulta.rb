@@ -5,21 +5,11 @@ JobVacancy::App.controllers :consulta do
     render 'consulta/my_consultas'
   end    
 
-  # get :index do
-  #   @offers = JobOffer.all
-  #   render 'job_offers/search'
-  # end  
-
-  get :new, :with =>:offer_id  do
+  get :new do
     @consulta = Consulta.new
-    @consulta.job = JobOffer.get(params[:offer_id])
+    @consulta.job_offer = JobOffer.get(params[:offer_id])
     render 'consulta/new'
   end
-
-  # get :latest do
-  #   @offers = JobOffer.all
-  #   render 'job_offers/list'
-  # end
 
   get :edit, :with =>:consu_id  do
     @consulta = Consulta.get(params[:consu_id])
@@ -36,13 +26,14 @@ JobVacancy::App.controllers :consulta do
   post :create do
     @consulta = Consulta.new(params[:consulta])
     @consulta.owner = current_user
+    @consulta.job_offer = JobOffer.get(params[:offer_id])
     if @consulta.save
       flash[:success] = 'Consulta Creada'
       redirect '/consulta/my'
     else
-      flash.now[:error] = 'Title and Description are mandatory..'
+      flash.now[:error] = 'Title and Description son obligatorios y debe estar logeado'
       render 'consulta/new'
-    end  
+    end
   end
 
   post :update, :with => :consulta_id do
@@ -54,7 +45,7 @@ JobVacancy::App.controllers :consulta do
     else
       flash.now[:error] = 'Title and Description are mandatory'
       render 'consulta/edit'
-    end  
+    end
   end
 
   delete :destroy do
@@ -67,4 +58,10 @@ JobVacancy::App.controllers :consulta do
     redirect 'consulta/my'
   end
 
-end
+  get :listConsultas do
+    @job = JobOffer.get(params[:offer_id])
+    @consultas_find= Consulta.find_by_job_offer(@job)
+    render 'consulta/offer_consultas'
+  end  
+
+ end

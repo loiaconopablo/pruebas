@@ -8,6 +8,10 @@ class Consulta
 	belongs_to :job_offer
 	belongs_to :user
 	
+
+	validates_presence_of :title
+	validates_presence_of :description
+	
 	def owner
 		user
 	end
@@ -24,8 +28,8 @@ class Consulta
 		Consulta.all(:job_offer => job_offer)
 	end
 
-	def job=(a_job_offer)
-		self.job_offer = a_job_offer
-	end
+	# def job=(a_job_offer)
+	# 	self.job_offer = a_job_offer
+	# end
 
 end

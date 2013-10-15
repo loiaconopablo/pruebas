@@ -1,9 +1,10 @@
-<h1>Nueva Consulta </h1> 
+<h1>Nueva Consulta para la oferta <%=@consulta.job_offer.title %> </h1> 
 
 <% form_for(@consulta, '/consulta/create') do |f| %>
  
   <%= partial 'consulta/form', :locals => { :f => f } %>
 	
+<input type="hidden" name="offer_id" value="<%= @consulta.job_offer.id %>" />
   <%= f.submit "Create", :class => "btn btn-primary" %>
   <%= link_to 'Cancel', url_for(:consulta, :my), :class => "btn btn-secondary" %>
 <% end %>

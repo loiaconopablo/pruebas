@@ -1,12 +1,12 @@
-<h1>Mis Consultas</h1>
+<h1>Consultas de la oferta <%=@job.title %> </h1>
 <table class="table table-bordered">
 	<tr>
-		<th>Title</th>
+		<th>Titulo</th>
 		<th>Description</th>
-		<th>Job Offer</th>
+		<th>Autor de la consulta</th>
 		<th>Acciones</th>
 	</tr>
-	<% @consultas_encontradas.each do | consu| %>
+	<% @consultas_find.each do | consu| %>
 
 	<tr>
 			<td>
@@ -14,21 +14,15 @@
 		</td>
 		<td>
 			<%= consu.description %>
-		</td>	
+		</td>
 		<td>
-			<%= consu.job_offer.title %>
+			<%= consu.user.email %>
 		</td>		
 		<td>
-		<%= link_to 'Edit', url_for(:consulta, :edit, :consu_id => consu.id), :class => "btn btn-primary" %>
 			<%- form_tag url(:consulta, :destroy, :consu_id => consu.id), :method => :delete, :style => 'display:inline' do %>
                 <button type='submit' title="Delete offer" rel='tooltip' class="btn btn-secondary" >Delete
                 </button>
        <% end %>
 		</td>	
 	</tr>
-
-  <% end %>
-
-
-
-</table>
+<% end %>
